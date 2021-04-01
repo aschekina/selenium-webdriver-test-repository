@@ -12,7 +12,7 @@ test.describe('Логин в приложении Litecart', function() {
             .build();
     });
 
-    test.it('Вводи логин и пароль, нажимаем кнопку', function() {
+    test.it('Вводим логин и пароль, нажимаем кнопку', function() {
         driver.get('http://localhost/litecart/admin');
         driver.findElement(By.name('username')).sendKeys('admin');
         driver.findElement(By.name('password')).sendKeys('admin');
