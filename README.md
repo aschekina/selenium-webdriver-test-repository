@@ -1,1 +1,1 @@
-# selenium-webdriver-test-repository
+# Репозиторий для курса по Selenium Webdriver
