@@ -1,1 +1,1 @@
-# Р РµРїРѕР·РёС‚РѕСЂРёР№ РґР»СЏ РєСѓСЂСЃР° РїРѕ Selenium Webdriver
+# Репозиторий для курса по Selenium Webdriver
