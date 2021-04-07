@@ -1,14 +1,16 @@
 var webdriver = require('selenium-webdriver'),
+    firefox = require('selenium-webdriver/Firefox'),
     By = webdriver.By,
     until = webdriver.until,
     test = require('selenium-webdriver/testing');
 
-test.describe('Логин в приложении Litecart', function() {
+test.describe('Логин в приложении Litecart через Firefox', function() {
     var driver;
 
     test.before(function() {
         driver = new webdriver.Builder()
-            .forBrowser('chrome')
+            .withCapabilities({ 'marionette': true, })
+            .forBrowser('firefox')
             .build();
     });
 
