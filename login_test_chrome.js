@@ -20,7 +20,7 @@ test.describe('Логин в приложении Litecart через Chrome', f
 
     test.it('Вводим логин и пароль, нажимаем кнопку', function() {
         driver.get('http://localhost/litecart/admin');
-        driver.sleep(2000);
+        //driver.sleep(2000);
         driver.findElement(By.name('username')).sendKeys('admin');
         driver.findElement(By.name('password')).sendKeys('admin');
         driver.findElement(By.name('login')).click()

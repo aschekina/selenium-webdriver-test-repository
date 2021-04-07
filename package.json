@@ -1,9 +1,10 @@
 {
-    "name": "js-example",
+    "name": "selenium-webdriver-test-repository",
     "version": "0.0.0",
     "private": true,
     "dependencies": {
-        "selenium-webdriver": "~6.14.11"
+        "@microsoft/edge-selenium-tools": "^3.6.1",
+        "selenium-webdriver": "^3.6.0"
     },
     "devDependencies": {
         "mocha": "^8.3.2"
