@@ -5,8 +5,8 @@ By = webdriver.By,
     test = require('selenium-webdriver/testing');
 
 var options = new edge.Options();
-//options.setEdgeChromium(true);
-//options.setChromeBinaryPath("C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe");
+options.setEdgeChromium(true);
+options.setChromeBinaryPath("C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe");
 
 test.describe('Логин в приложении Litecart через Edge', function() {
     var driver;
