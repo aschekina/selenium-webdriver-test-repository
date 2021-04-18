@@ -2,6 +2,7 @@ const { eq, isEqual, isEqualWith } = require('lodash')
 const { Browser, By, Key, until } = require('selenium-webdriver')
 const { elementTextContains } = require('selenium-webdriver/lib/until')
 const { ignore, suite } = require('selenium-webdriver/testing')
+var expect = require('expect')
 
 suite(function(env) {
     describe('Litecart', function() {
@@ -15,10 +16,13 @@ suite(function(env) {
             await driver.get('http://localhost/litecart')
             var images = await driver.findElements(By.className('image-wrapper'))
             var stickers = await driver.findElements(By.css("div[class *= 'sticker']"))
+            var len = 0
             for (var i = 0; i < images.length; i++) {
                 stickers = await images[i].findElements(By.css("div[class *= 'sticker']"))
-                isEqual(stickers.length, 1)
+                    //len = stickers.length
+                expect(isEqual(stickers.length, 1)).toBe(true)
             }
+
         })
         after(() => driver && driver.quit())
     })
