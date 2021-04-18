@@ -30,7 +30,7 @@ suite(function(env) {
             let countries_sorted = countries.sort()
             expect(isEqual(countries, countries_sorted)).toBe(true)
         })
-        it('Проверка сортировки зон', async function() {
+        it('Проверка сортировки зон, если они есть', async function() {
             let rows = await driver.findElements(By.css(".dataTable  tr.row"))
             let zones = new Array();
             let zones_sorted = new Array();
@@ -51,6 +51,26 @@ suite(function(env) {
             }
             zones_sorted = zones.sort()
             expect(isEqual(zones, zones_sorted)).toBe(true)
+        })
+        it('Проверка сортировки зон в каждой стране', async function() {
+            await driver.get('http://localhost/litecart/admin/?app=geo_zones&doc=geo_zones')
+            let rows = await driver.findElements(By.css(".dataTable  tr.row"))
+            let zones = new Array();
+            let zones_sorted = new Array();
+            for (let i = 0; i < rows.length; i++) {
+                rows = await driver.findElements(By.css(".dataTable  tr.row"))
+                await rows[i].findElement(By.css("td:nth-of-type(5) > a")).click();
+                zone_list = await driver.findElements(By.css("select[name *= '[zone_code]'] > option[selected = 'selected']"))
+                for (let j = 0; j < zone_list.length; j++) {
+                    let name = await zone_list[j].getAttribute("textContent")
+                    zones.push(name)
+                }
+                zones_sorted = zones.sort()
+                expect(isEqual(zones, zones_sorted)).toBe(true)
+                await driver.get('http://localhost/litecart/admin/?app=geo_zones&doc=geo_zones')
+                zones = []
+                zones_sorted = []
+            }
         })
         after(() => driver && driver.quit())
     })
