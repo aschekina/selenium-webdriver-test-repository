@@ -16,10 +16,8 @@ suite(function(env) {
             await driver.get('http://localhost/litecart')
             var images = await driver.findElements(By.className('image-wrapper'))
             var stickers = await driver.findElements(By.css("div[class *= 'sticker']"))
-            var len = 0
             for (var i = 0; i < images.length; i++) {
                 stickers = await images[i].findElements(By.css("div[class *= 'sticker']"))
-                    //len = stickers.length
                 expect(isEqual(stickers.length, 1)).toBe(true)
             }
 

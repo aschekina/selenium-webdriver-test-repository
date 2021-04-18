@@ -9,7 +9,7 @@ suite(function(env) {
 
         before(async function() {
             driver = await env.builder().build()
-            driver.manage().setTimeouts({ implicit: 100000 })
+            driver.manage().setTimeouts({ implicit: 1000 })
         })
 
         it('Авторизация', async function() {
@@ -26,7 +26,7 @@ suite(function(env) {
                 mainList = await driver.findElements(By.css('li#app- > a'))
                 mainList[i].click()
                 mainList = await driver.findElements(By.css('li#app- > a'))
-                if (driver.findElement(By.className('docs'))) {
+                if (driver.findElement(By.css("['li#app-'] [class = 'docs']"))) {
                     var secondaryList = await driver.findElements(By.css('ul.docs a'))
                     var len2 = secondaryList.length
                     for (var j = 0; j < len2; j++) {
@@ -34,8 +34,8 @@ suite(function(env) {
                         secondaryList[j].click()
                         secondaryList = await driver.findElements(By.css('ul.docs a'))
                     }
+
                 }
-                mainList = await driver.findElements(By.css('li#app- > a'))
             }
         })
         after(() => driver && driver.quit())
