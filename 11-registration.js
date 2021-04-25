@@ -32,7 +32,8 @@ suite(function(env) {
             driver.manage().setTimeouts({ implicit: 1000 })
         })
         it('Регистрация новой учётной записи', async function() {
-            await driver.get('http://localhost/litecart/en/create_account')
+            await driver.get('http://localhost/litecart')
+            await driver.findElement(By.css("#box-account-login a")).click();
             await driver.findElement(By.name('firstname')).sendKeys('Bilbo')
             await driver.findElement(By.name('lastname')).sendKeys('Baggins')
             await driver.findElement(By.name('address1')).sendKeys('Bag End, 1 Bagshot Row')
