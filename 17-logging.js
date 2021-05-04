@@ -18,6 +18,7 @@ suite(function(env) {
             await driver.findElement(By.name('login')).click()
         })
         it('Проверка логирования', async function() {
+            let logs = new Array()
             let count = await driver.findElements(By.css(".dataTable tr.row"));
             for (let i = 3; i <= count.length + 1; i++) {
                 let row = await driver.findElement(By.css(".dataTable .row:nth-child(" + i + ")"));
@@ -26,9 +27,11 @@ suite(function(env) {
                     await row.findElement(By.css("a")).click();
                     await driver.manage().logs().get("browser").then(function(logsEntries) {
                         logsEntries.forEach(function(l) {
+                            logs.push(1)
                             console.log(l)
-                        });
+                        })
                     });
+                    if (logs == 0) { console.log("Логов нет.") }
                     await driver.get("http://localhost/litecart/admin/?app=catalog&doc=catalog&category_id=1");
                 }
             }
