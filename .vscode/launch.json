@@ -20,7 +20,8 @@
             "internalConsoleOptions": "openOnSessionStart",
             "skipFiles": [
                 "<node_internals>/**"
-            ]
+            ],
+            "outputCapture": "std", // or "console" 
         },
         {
             "type": "pwa-node",
