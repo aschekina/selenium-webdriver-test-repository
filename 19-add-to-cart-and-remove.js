@@ -8,17 +8,17 @@ describe('Litecart', function() {
         app = new target.Application();
     });
     it('Добавление товара в корзину', async function() {
-        app.addProduct()
+        await app.addProduct()
     })
     it('Добавление добавление в корзину еще двух товаров', async function() {
         for (let i = 0; i < 2; i++) {
-            app.addProduct()
+            await app.addProduct()
         }
     })
     it('Удаление товаров из корзины', async function() {
-        app.removeProducts()
+        await app.removeProducts()
     })
-    after(function() {
-        app.quit();
+    after(async function() {
+        await app.quit();
     });
 })

@@ -9,22 +9,22 @@ class CartPage {
         this.driver = driver;
     }
 
-    openCart() {
-        this.driver.findElement(By.css("#cart .link")).click();
+    async openCart() {
+        await this.driver.findElement(By.css("#cart .link")).click();
     }
 
-    removeFromCart() {
-        let count = this.driver.findElements(By.css("li.shortcut"))
+    async removeFromCart() {
+        let count = await this.driver.findElements(By.css("li.shortcut"))
         count = count.length - 1
-        this.driver.findElement(By.xpath("//a[@href='#']//img")).click()
-        let name = this.driver.findElement(By.xpath("//form[@accept-charset='UTF-8']//strong")).getAttribute("textContent")
-        this.driver.findElement(By.xpath("//button[@name='remove_cart_item']")).click()
-        this.driver.wait(until.elementLocated(By.xpath("//td[@class='item']")))
+        await this.driver.findElement(By.xpath("//a[@href='#']//img")).click()
+        let name = await this.driver.findElement(By.xpath("//form[@accept-charset='UTF-8']//strong")).getAttribute("textContent")
+        await this.driver.findElement(By.xpath("//button[@name='remove_cart_item']")).click()
+        await this.driver.wait(until.elementLocated(By.xpath("//td[@class='item']")))
         this.driver.wait((until.stalenessOf(By.xpath("//td[text()='" + name + "']"))), 6000)
     }
-    removeLastProduct() {
-        let name = this.driver.findElement(By.xpath("//form[@accept-charset='UTF-8']//strong")).getAttribute("textContent")
-        this.driver.findElement(By.xpath("//button[@name='remove_cart_item']")).click()
+    async removeLastProduct() {
+        let name = await this.driver.findElement(By.xpath("//form[@accept-charset='UTF-8']//strong")).getAttribute("textContent")
+        await this.driver.findElement(By.xpath("//button[@name='remove_cart_item']")).click()
         this.driver.wait((until.stalenessOf(By.xpath("//td[text()='" + name + "']"))), 6000)
     }
 }

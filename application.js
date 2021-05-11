@@ -12,18 +12,18 @@ class Application {
         this.productPage = new product_page.ProductPage(this.driver);
         this.cartPage = new cart_page.CartPage(this.driver);
     }
-    quit() {
-        this.driver.quit();
+    async addProduct() {
+        await this.mainPage.open();
+        await this.mainPage.firstProduct();
+        await this.productPage.addToCart();
     }
-    addProduct() {
-        this.mainPage.open();
-        this.mainPage.firstProduct();
-        this.productPage.addToCart();
+    async removeProducts() {
+        await this.cartPage.openCart();
+        await this.cartPage.removeFromCart();
+        await this.cartPage.removeLastProduct();
     }
-    removeProducts() {
-        this.cartPage.openCart();
-        this.cartPage.removeFromCart();
-        this.cartPage.removeLastProduct();
+    async quit() {
+        await this.driver.quit();
     }
 }
 

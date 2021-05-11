@@ -9,12 +9,12 @@ class MainPage {
         this.driver = driver;
     }
 
-    open() {
-        this.driver.get('http://localhost/litecart')
+    async open() {
+        await this.driver.get('http://localhost/litecart')
     }
 
-    firstProduct() {
-        this.driver.findElement(By.xpath("(//a[@class='link'])[2]")).click();
+    async firstProduct() {
+        await this.driver.findElement(By.xpath("(//a[@class='link'])[2]")).click();
     }
 
 }
